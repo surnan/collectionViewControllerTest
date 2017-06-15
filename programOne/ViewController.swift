@@ -10,8 +10,6 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var temp = 5
-    var temp2 = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
