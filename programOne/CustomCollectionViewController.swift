@@ -47,15 +47,18 @@ class CustomCell: UICollectionViewCell {
     let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "Custom Text"
-        label.backgroundColor = UIColor.white
+        label.backgroundColor = UIColor.red //1 this shifts the entire cell over?
         label.translatesAutoresizingMaskIntoConstraints = false  //crashes without this cuz it gets constrains drama
         return label
     }()
     
     
     func setupViews(){
+        //backgroundColor = UIColor.white //2 also works
        addSubview(nameLabel)
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : nameLabel]))
+        backgroundColor = UIColor.white  //3 works
+
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-10-[v0]-5-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : nameLabel]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : nameLabel]))
     }
     
