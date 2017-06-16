@@ -22,13 +22,24 @@ class CustomCollectionViewController: UICollectionViewController, UICollectionVi
         collectionView?.register(CustomCell.self, forCellWithReuseIdentifier: customCellIdentifier) //error forcing us to create CustomCell
     }
     
+    
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return names.count
     } //now you have to make a cell (which needs to be registered (line with reuse-identifier)
+   
+    
+    let names = ["Mark Zuckerber", "Bill Gates", "Steve Jobs"]
+    
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         
-        let customCell = collectionView.dequeueReusableCell(withReuseIdentifier: customCellIdentifier, for: indexPath)
+        let customCell = collectionView.dequeueReusableCell(withReuseIdentifier: customCellIdentifier, for: indexPath) as! CustomCell
+        
+        customCell.nameLabel.text = names[indexPath.row]
+        
+        //added this after making the move to print elements in the array, as opposed to just "custom text" 3x
+        
         return customCell
     }
     
